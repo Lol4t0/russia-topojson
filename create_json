@@ -5,9 +5,12 @@ mkdir -p rus
 cd rus
 
 wget http://biogeo.ucdavis.edu/data/gadm2/shp/RUS_adm.zip
+wget http://biogeo.ucdavis.edu/data/gadm2/shp/UKR_adm.zip
 unzip RUS_adm.zip
+unzip UKR_adm.zip
 
 ogr2ogr -f GeoJSON subunits.json RUS_adm1.shp
-topojson -e RUS_adm2.csv -s 1e-7 -p -o russia.json subunits.json --no-stitch-poles
-rm subunits.json
+ogr2ogr -where "ID_1 IN ('4', 20)"  -f GeoJSON subunits_ua.json UKR_adm1.shp
+topojson -e RUS_adm2.csv -s 1e-7 -p -o russia.json subunits.json subunits_ua.json --no-stitch-poles
+rm subunits.json subunits_ua.json 
 
