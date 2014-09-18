@@ -1,5 +1,5 @@
 #!/bin/sh
 
-sudo yum install gdal nodejs npm wget unzip
-sudo yum install topojson
+sudo yum install -y gdal nodejs npm wget unzip p7zip
+sudo npm install topojson
 
