@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+mkdir -p roads
+cd roads
+
+ogr2ogr -f GeoJSON roads_asia.json ../routes_data/roads_asia.shp
+ogr2ogr -f GeoJSON roads_europe.json ../routes_data/roads_europe.shp
+../make_roads.sh roads_europe.json roads_asia.json > roads.csv
